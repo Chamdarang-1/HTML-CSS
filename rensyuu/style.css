@@ -1,19 +1,31 @@
 @charset "utf-8";
 
-body{
-    background-color: #fffeee;
-}
-h1 {
-    color: #0bd;
-}
+
+
 /* p{
     font-size: 20px;
     font-size: 20/;
     font-size: 20rem;
 } */
+ body{background-color: #fffeee;}
+ h1{background-color: yellow;}
 
-div p{color: red;}
+p{color: red;}
+
+h1 {color: #0bd;}
+
+h2{color: rgba(10, 130, 165, .5);}
 
 html { font-size: 100%;}
 h1 {font-size: 2rem;}
 h2 {font-size: 20px;}
+
+h1{font-family: "맑은 고딕", "Malgun Gothic", MalgunGothic, sans-serif;}
+h2{font-family: "궁서체";}
+p{font-family: serif;}
+
+p{font-weight: bold;}
+
+p{line-height: 1.7;}
+
+/* p{text-align: center;} */
