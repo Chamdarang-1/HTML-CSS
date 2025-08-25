@@ -26,7 +26,7 @@ h1{font-family: "맑은 고딕", "Malgun Gothic", MalgunGothic, sans-serif;}
 
 p{font-weight: bold;}
 
-p{line-height: 1.7;}
+/* p{line-height: 1.7;} */
 
 /* body{
     background-color: #f5f2e5;
@@ -91,6 +91,43 @@ border-color: tan #0bd tomato #000;}
 
 ul{list-style : square url(images/star.png) outside;}  */
 
-p{color: #999;}
+/* p{color: #999;}
 #orange{color:#fa2;}
-.blue{color: #0bd;}
+.blue{color: #0bd;} */
+
+/* .blue{color: #0bd;}
+p.blue{color: #0bd;} */
+
+/* .item{
+    background: #0bd;
+    color: #fff;
+    margin: 10px;
+    padding: 10px
+} */
+/* .container{display: flex; flex-direction: row-reverse;} */
+/* .container{display: flex; flex-wrap: wrap;} */
+/* .container{display: flex; justify-content: flex-end;} */
+/* .container{
+    display: flex; 
+    align-items: center; 
+    height: 100vh;
+} */
+/* .container{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;    
+    height: 300px;
+} */
+
+.item{
+    background: #0bd;
+    color: #fff;
+    padding: 10px
+}
+/* .container{
+    display:gird;
+} */
+.container{
+    display:grid;
+    grid-template-columns: 200px 200px 200px;
+}
