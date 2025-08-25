@@ -8,24 +8,89 @@
     font-size: 20rem;
 } */
  body{background-color: #fffeee;}
- h1{background-color: yellow;}
+ /* h1{background-color: yellow;} */
 
-p{color: red;}
+/* p{color: red;}
 
-h1 {color: #0bd;}
-
-h2{color: rgba(10, 130, 165, .5);}
+h1 {color: #0bd;} */
+/* 
+h2{color: rgba(10, 130, 165, .5);} */
 
 html { font-size: 100%;}
 h1 {font-size: 2rem;}
 h2 {font-size: 20px;}
 
 h1{font-family: "맑은 고딕", "Malgun Gothic", MalgunGothic, sans-serif;}
-h2{font-family: "궁서체";}
-p{font-family: serif;}
+/* h2{font-family: "궁서체";} */
+/* p{font-family: serif;} */
 
 p{font-weight: bold;}
 
 p{line-height: 1.7;}
 
+/* body{
+    background-color: #f5f2e5;
+    background-image: url(images/bg.png);
+} */
+
+/* body{
+    background-image: url(../day0818/images/a2.png);
+    background-repeat: no-repeat; 
+    height: 100vh;
+} */
+
+/* body{ background-size: cover;} */
+/* body{ background-position: top center;} */
+
 /* p{text-align: center;} */
+/* div{
+    background: #70a2dc url(images/bg-airplane.jpg) no-repeat center bottom/cover;
+} */
+
+/* div{
+    background: #0bd;
+    width: 200px;
+    padding:30px;
+} */
+
+/* p{
+    border-width: thick;
+    border-style: solid;
+} */
+/* div{
+    border-width: 1px 4px 8px 12px;
+    border-style: solid;
+} */
+
+/* p{
+    border-width: 1px;
+    border-style: solid;
+}
+ div{
+    border-width: 4px;
+    border-style: double dotted solid ridge;
+} */
+
+/* p{border-style: solid;
+border-color: tomato;}
+
+div{border-style: solid;
+border-color: tan #0bd tomato #000;}
+ */
+
+ /* p{border-bottom: 2px solid #0bd;}
+ div{border:5px dotted tomato;} */
+
+ /* ul{list-style-type: square;}
+ ol{list-style-type: hangul;} */
+ 
+ /* ul{list-style-position: outside;}
+ ol{list-style-position: inside;}
+
+ ul{list-style-image: url(../imagefood/1.jpg);}
+
+ul{list-style : square url(images/star.png) outside;}  */
+
+p{color: #999;}
+#orange{color:#fa2;}
+.blue{color: #0bd;}
