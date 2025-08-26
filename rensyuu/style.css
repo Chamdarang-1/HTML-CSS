@@ -127,7 +127,17 @@ p.blue{color: #0bd;} */
 /* .container{
     display:gird;
 } */
-.container{
+/* .container{
     display:grid;
     grid-template-columns: 200px 200px 200px;
+} */
+/* .container{
+    display:grid;
+    grid-template-columns: 200px 200px 200px;
+    gap: 10px;
+} */
+.container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
 }
