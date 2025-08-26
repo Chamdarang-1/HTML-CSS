@@ -1,0 +1,366 @@
+@charset "utf-8";
+
+/* html margin, padding값, 기본 font 지정 */
+*{
+    margin: 0;
+    padding: 0;
+    font: normal 12px "noto sans korean";
+}
+
+/* <a>태그에서 발생하는 밑줄표시와 색상 변경 */
+a{ text-decoration: none;
+    color: black;
+}
+
+/* <ul>태그와 <ol> 태그의 list-style-type을 none으로 변경 */
+ul,ol{
+    list-style: none;
+}
+
+/* <body>태그에서 한 번 더 감싸는 <div>태그의 너비와 높이를 부모 태그와 1:1 비율로 지정한다.*/
+/* 왜 때문에 이러한 작업을 또 하는지? */
+#layout{
+    width: 100%;
+    height: 100%;
+}
+
+/* 헤더의 너비를 layout의 비율과 1:1로 지정하고, 높이는 자동으로 조정한다. */
+header{
+    width: 100%;
+    height: auto;
+}
+
+/* 헤더의 바로 아래 클래스인 div 클래스의 너비만 지정한다. */
+header > div{width: 100%;}
+
+/* 헤더의 첫 번째 div 클래스의 높이 지정 및 header의 아래 border만 실선으로 출력
+box-sizing : border-box에 대한 정리 필요함*/
+header > div:nth-child(1){
+    height: 36px; 
+    border-bottom: 1px solid #dcdcdc;
+    box-sizing: border-box;
+}
+
+header > div:nth-child(2){height: 100px;
+}
+
+/* 높이를 조정하고 배경 색상을 변경(<nav> 메뉴) */
+header > div:nth-child(3){
+    height: 54px;
+    background: #40382e;
+}
+
+/* header의 모든 div의 최대 너비를 조정하고 margin은 자동으로 조정되게 한다. */
+header > div > * {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* 최상단 메뉴 (로그인 | 마이페이지 등)의 정렬을 오른쪽으로 지정하고, 
+상단에 여백을 줘서 아래로 내려오게 한다. */
+header .header p{
+    float: right; 
+    margin-top: 10px;
+}
+
+/* 원래 자기 자리 기준으로 위치 조정 */
+header article {
+    position: relative;
+}
+
+/* 지정한 위치로 조정 */
+header article > .SHOPPING{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+/* 첫 번째 span에 대한 서식 변경 */
+header article > .SHOPPING span:nth-of-type(1){
+    color: #ff6a00;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+header article > .SHOPPING span:nth-of-type(2){
+    font-size: 12px;
+}
+
+/* 지정한 위치를 조정하고 왼쪽의 마진값을 조정한다(중앙으로 정렬하기 위해). */
+header article > .logo {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    margin-left:-173px;
+}
+
+/*  */
+header article > .oneDay {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+}
+
+header nav > ul {
+    width: 100%;
+    height: 100%;            
+}
+/* <ul> 내부의 <li> 정렬(float : right 으로 하면 생활잡화부터 왼쪽으로 정렬됨) */
+header nav > ul > li {
+    float: left;
+    width: 11.11%;
+    height: 100%;
+}
+/* <li> 내부의 <a> 태그 속성 지정 */
+header nav > ul > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 54px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+/* <a> 태그에 마우스 올리면 글씨가 주황색으로 변하도록 지정 */
+header nav > ul > li > a:hover {color: #ff6a00;}
+
+
+
+main {
+    width: 100%;
+    height: auto;            
+}
+
+main > section {
+    width: 100%;
+    height: auto;            
+}
+
+main > section:nth-child(1) {height: 352px;}
+main > section:nth-child(2) {height: 520px;}
+main > section:nth-child(3) {height: 190px;}
+main > section:nth-child(4) {height: 660px;}
+main > section:nth-child(5) {height: 200px;}
+main > section:nth-child(6) {height: 660px;}
+
+main > section > article {
+    width: 1100px;
+    height: 100%;            
+    margin: 0 auto;
+}
+
+/* 슬라이드배너의 배경색과 동일한 색으로 section 배경 채우기 */
+main > .slideBanner {
+    background: #ffeed4;
+}
+
+/* 슬라이드 배너의 <ul>에 대한 속성을 지정한다. 클래스의 크기를 넘어가면 잘라낸다.(overflow : hidden) */
+main > .sliderBanner ul {
+    position: relative;
+    width: 100%;
+    height: 100%;            
+    overflow: hidden;
+}
+main > .sliderBanner ul > li{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+main > .sliderBanner ul > li:nth-child(1){left: 0; top: 0;}
+
+main > .grid > article {
+    padding: 30px 10px;
+    box-sizing: border-box;
+}
+main > .grid > article > .banner {
+    position: relative;
+    float: left;
+}
+main > .grid > article > .banner1 {
+    width: 412px; 
+    height: 450px;
+    background-image: url('../foodshop/main_go_bg1.png');
+}
+main > .grid > article > .banner2 {
+    width: 322px;
+    height: 220px;
+    margin-left: 11px;
+    background-image: url('../foodshop/main_go_bg2.png');
+}
+main > .grid > article > .banner3 {
+    float:right; 
+    width: 322px;
+    height: 220px;
+    background-image: url('../foodshop/main_go_bg3.png');
+}
+main > .grid > article > .banner4 {
+    width: 322px; 
+    height: 220px;
+    margin-left: 11px;
+    margin-top: 10px;
+    background-image: url('../foodshop/main_go_bg4.png');
+}
+main > .grid > article > .banner5 {
+    float:right;
+    width: 322px;
+    height: 220px;
+    margin-top: 10px;
+    background-image: url('../foodshop/main_go_bg5.png');
+}
+
+main > .grid > article > .banner > a {
+    position: absolute;            
+    left: 26px;
+    top: 36px;
+}
+
+ main > .grid > article > .banner > a .theme {
+    font-weight: bold;
+    font-size: 16px;
+    color: #ff6312;
+}
+main > .grid > article > .banner > a .gridBannerTitle {
+    font-size: 24px;            
+    color: #fcfffd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 30px;
+}
+main > .grid > article > .banner > a .gridBannerTitle.dark {
+    color: #3c362a;
+}
+
+main > .grid > article > .banner > a .gridBannerTitle > i {
+    display: block;
+    margin-top: 24px;
+    font-size: 14px;
+}
+
+main > .oneDayBanner {
+    background-image: url('../foodshop/oneday_bg.png');
+    background-size: cover;
+    background-position: 50% center;
+}
+
+main > .oneDayBanner > article img {margin-top: 50px;}
+
+main > .vegeLife > article {
+    padding: 60px 0px 40px;
+    box-sizing: border-box;
+    text-align: center;
+}
+main .recommendation {            
+    width: 100%;
+    height: 312px;
+    margin-top: 36px;            
+    box-sizing: border-box;
+    overflow: hidden;
+}
+main .recommendation > li {
+    float: left;            
+    top: 0px;
+    width: 25%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+ main .recommendation > li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+main .recommendation > li img {
+    width: 100%;
+    height: 170px; 
+    object-fit: cover;
+}
+main .recommendation > li h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #41392f;
+    margin-top: 12px;
+}
+main .recommendation > li p {
+    font-size: 13px;
+    font-weight: bold;          
+    color: #959595;
+    margin: 12px 0 26px;
+}
+main .recommendation > li h2 {
+    font-size: 20px;
+    font-weight: bold;          
+    color: #ff6a00;
+}
+
+main .all {
+    display: block;
+    width: 300px;
+    height: 50px;
+    border: 1px solid #efefef;
+    box-shadow: 0px 2px 2px #999;
+    text-align: center;
+    line-height: 50px;
+    margin: 56px auto 0;            
+    color: #626262;
+    font-size: 15px;
+    font-weight: bold;
+}
+main .all:hover {border-color: #999;}
+
+footer {
+    width: 100%;
+    height: auto;
+}
+
+footer > div {
+    width: 100%;
+}
+
+footer > div:nth-child(1) {
+    height: 50px;
+    background-color: #626262;
+}
+
+footer > div:nth-child(2) {
+    height: 156px;           
+    background-color: #434343; 
+}
+
+footer > div > div {
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+footer .terms {   
+    float: left;         
+    margin-top: 14px;
+    color: #eee;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+footer .terms > a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+footer .terms > a:first-child {color: #ff6a00;}
+
+footer .info {
+    float: left;
+    margin-top: 16px;
+    color: #aca9a9;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+footer .tel {            
+    float: right;
+    margin-top: 16px;
+}
