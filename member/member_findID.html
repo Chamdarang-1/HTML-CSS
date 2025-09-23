@@ -11,7 +11,7 @@
             --gray: #777;
             --light: #f4f5f7;
             --primary: #111;
-            --accent: #3F97F6;
+            --accent: #3F97F6
         }
 
         * {
@@ -30,7 +30,7 @@
         }
 
         .wrap {
-            max-width: 720px;
+            max-width: 760px;
             margin: 48px auto;
             padding: 0 20px
         }
@@ -52,7 +52,6 @@
         .card {
             background: #fff;
             border: 1px solid #e6e6e6;
-            border-radius: 6px;
             padding: 28px 24px
         }
 
@@ -71,7 +70,6 @@
             height: 48px;
             padding: 0 14px;
             border: 1px solid #ddd;
-            border-radius: 4px;
             outline: none
         }
 
@@ -107,7 +105,6 @@
         .btn {
             flex: 1 1 0;
             height: 50px;
-            border-radius: 4px;
             border: 1px solid #111;
             background: #111;
             color: #fff;
@@ -145,7 +142,6 @@
             width: 100%;
             height: 48px;
             border: 1px solid #ddd;
-            border-radius: 4px;
             padding: 0 12px
         }
 
@@ -154,50 +150,48 @@
             background: #eee;
             margin: 20px 0
         }
+
+        .row-email{
+            margin: 10px 0 18px 0;
+        }
+
+        .row-phone{
+            margin: 10px 0 18px 0;
+        }
     </style>
 </head>
+
 <script>
-    fetch("../main/header.html") //각자 주소 수정!!!
+    fetch("../main/header.html")
         .then(res => res.text())
         .then(data => {
             document.getElementById("header").innerHTML = data;
-
-            // header.html 안의 스크립트 실행 강제
             const scripts = document.getElementById("header").querySelectorAll("script");
             scripts.forEach(oldScript => {
-                const newScript = document.createElement("script");
-                if (oldScript.src) {
-                    newScript.src = oldScript.src;
-                } else {
-                    newScript.textContent = oldScript.textContent;
-                }
-                document.body.appendChild(newScript);
+                const s = document.createElement("script");
+                if (oldScript.src) { s.src = oldScript.src; } else { s.textContent = oldScript.textContent; }
+                document.body.appendChild(s);
             });
         });
 
-
-    fetch("../main/footer.html") //각자 주소 수정!!!
+    fetch("../main/footer.html")
         .then(res => res.text())
-        .then(data => {
-            document.getElementById("footer").innerHTML = data;
-        });
+        .then(data => { document.getElementById("footer").innerHTML = data; });
 </script>
-
 
 <body>
     <div id="header"></div>
     <div class="wrap">
         <h1>아이디 찾기</h1>
-        <p class="desc">가입하신 방법에 따라 아이디 찾기가 가능합니다.<br>법인/외국인 회원의 경우 필요한 정보를 정확히 입력해 주세요.</p>
+        <p class="desc">가입하신 방법에 따라 아이디 찾기가 가능합니다.</p>
 
         <div class="card">
-            <!-- 회원유형 (선택사항: 화면과 톤 맞춤) -->
+            <!-- 회원유형 -->
             <div class="row">
                 <label for="memberType">회원유형</label>
                 <select id="memberType" class="select" aria-label="회원유형">
-                    <option value="personal">개인회원</option>
-                    <option value="business">법인회원</option>
-                    <option value="foreign">외국인회원</option>
+                    <option value="personal">일반회원</option>
+                    <option value="business">판매자회원</option>
                 </select>
             </div>
 
@@ -223,12 +217,14 @@
                 <div class="row">
                     <label for="email">이메일로 찾기</label>
                     <input id="email" class="field" type="email" placeholder="example@domain.com" autocomplete="email">
-                    <p class="helper">입력하신 이메일로 인증번호를 전송합니다.</p>
+                    <!-- 문구 수정 -->
+                    <p class="helper">이름과 이메일이 모두 입력되어야 인증번호를 전송합니다.</p>
                 </div>
                 <div class="sub-actions">
-                    <button id="sendEmailCode" class="btn" type="button">인증번호 전송</button>
+                    <!-- 초기 비활성화 -->
+                    <button id="sendEmailCode" class="btn" type="button" disabled>인증번호 전송</button>
                 </div>
-                <div id="emailVerifyGroup" class="row hidden">
+                <div id="emailVerifyGroup" class="row-email hidden">
                     <label class="sr-only" for="emailCode">인증번호</label>
                     <div class="inline">
                         <input id="emailCode" class="field" type="text" inputmode="numeric" pattern="[0-9]*"
@@ -244,12 +240,14 @@
                     <label for="phone">휴대폰 번호로 찾기</label>
                     <input id="phone" class="field" type="tel" inputmode="tel" placeholder="01012345678"
                         maxlength="11" />
-                    <p class="helper">하이픈(-) 없이 숫자만 입력하세요.</p>
+                    <!-- 문구 수정 -->
+                    <p class="helper">이름과 휴대폰 번호가 모두 입력되어야 인증번호를 전송합니다. 하이픈(-) 없이 숫자만 입력하세요.</p>
                 </div>
                 <div class="sub-actions">
-                    <button id="sendSmsCode" class="btn" type="button">인증번호 전송</button>
+                    <!-- 초기 비활성화 -->
+                    <button id="sendSmsCode" class="btn" type="button" disabled>인증번호 전송</button>
                 </div>
-                <div id="phoneVerifyGroup" class="row hidden">
+                <div id="phoneVerifyGroup" class="row-phone hidden">
                     <label class="sr-only" for="smsCode">인증번호</label>
                     <div class="inline">
                         <input id="smsCode" class="field" type="text" inputmode="numeric" pattern="[0-9]*"
@@ -265,35 +263,23 @@
             </div>
         </div>
 
-        <p class="helper" style="margin-top:14px">※ 실제 발송·검증·아이디 조회는 서버 연동 필요 (코드에 연결 지점 주석 표기).</p>
+        <!-- <p class="helper" style="margin-top:14px">※ 실제 발송·검증·아이디 조회는 서버 연동 필요 (코드에 연결 지점 주석 표기).</p> -->
     </div>
 
     <script>
         // ===== 상태 관리 =====
-        const state = {
-            method: 'email',
-            emailCode: null,
-            smsCode: null,
-            emailVerified: false,
-            phoneVerified: false
-        };
-
+        const state = { method: 'email', emailCode: null, smsCode: null, emailVerified: false, phoneVerified: false };
         const $ = (sel) => document.querySelector(sel);
         const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-
         const emailSection = $('#emailSection');
         const phoneSection = $('#phoneSection');
         const nextBtn = $('#nextBtn');
 
         function toggleSections() {
-            if (state.method === 'email') {
-                emailSection.classList.remove('hidden');
-                phoneSection.classList.add('hidden');
-            } else {
-                phoneSection.classList.remove('hidden');
-                emailSection.classList.add('hidden');
-            }
+            if (state.method === 'email') { emailSection.classList.remove('hidden'); phoneSection.classList.add('hidden'); }
+            else { phoneSection.classList.remove('hidden'); emailSection.classList.add('hidden'); }
             updateNextAvailability();
+            updateSendButtons(); // ← 추가: 섹션 전환 시 버튼 상태 재평가
         }
 
         function validateBasic() {
@@ -309,8 +295,15 @@
             }
         }
 
-        function updateNextAvailability() {
-            nextBtn.disabled = !validateBasic();
+        function updateNextAvailability() { nextBtn.disabled = !validateBasic(); }
+
+        // 이름 입력 여부에 따라 "인증번호 전송" 버튼 활성/비활성
+        function updateSendButtons() {
+            const nameOk = $('#name').value.trim().length >= 2;
+            const emailBtn = document.getElementById('sendEmailCode');
+            const smsBtn = document.getElementById('sendSmsCode');
+            if (emailBtn) emailBtn.disabled = !nameOk;
+            if (smsBtn) smsBtn.disabled = !nameOk;
         }
 
         // 인증 방식 라디오
@@ -321,31 +314,35 @@
             });
         });
 
-        // 입력 변경 시 다음 버튼 활성화 갱신
+        // 입력 변경 시 버튼 상태/다음 버튼 갱신
         ['#name', '#email', '#phone', '#emailCode', '#smsCode'].forEach(sel => {
-            const el = $(sel); if (!el) return; el.addEventListener('input', updateNextAvailability);
+            const el = $(sel); if (!el) return;
+            el.addEventListener('input', () => { updateNextAvailability(); updateSendButtons(); });
         });
 
         // ===== 인증번호 전송 (Mock) =====
         function pseudoSend(to) {
-            // 실제 구현 시: 아래 fetch()를 사용해 서버로 전송
-            // fetch('/api/auth/send-code', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ method: state.method, to, name: $('#name').value })})
-            //   .then(r=>r.json()).then(({success})=>{ if(success){ ... }})
+            // 실제 구현 시: 서버에서 "이름 + 이메일/휴대폰" DB일치 여부 확인 후에만 발송.
+            // fetch('/api/auth/send-code',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({method:state.method,to,name:$('#name').value})})
+            //   .then(r=>r.json()).then(({success})=>{ if(success){ ... }});
             return new Promise(resolve => setTimeout(resolve, 600));
         }
 
         $('#sendEmailCode').addEventListener('click', async () => {
+            const name = $('#name').value.trim();
+            if (name.length < 2) { alert('이름을 입력해 주세요.'); $('#name').focus(); return; } // ← 추가 차단
             const email = $('#email').value.trim();
             if (!/.+@.+\..+/.test(email)) { alert('이메일 형식을 확인해 주세요.'); return; }
             await pseudoSend(email);
-            // 데모용 6자리 코드 생성
             state.emailCode = String(Math.floor(100000 + Math.random() * 900000));
-            console.log('[DEV] email code:', state.emailCode); // 개발 편의를 위한 출력 (배포 시 제거)
+            console.log('[DEV] email code:', state.emailCode);
             $('#emailVerifyGroup').classList.remove('hidden');
             alert('인증 번호를 전송했습니다!');
         });
 
         $('#sendSmsCode').addEventListener('click', async () => {
+            const name = $('#name').value.trim();
+            if (name.length < 2) { alert('이름을 입력해 주세요.'); $('#name').focus(); return; } // ← 추가 차단
             const phone = $('#phone').value.trim();
             if (!/^01[0-9]{8,9}$/.test(phone)) { alert('휴대폰 번호를 정확히 입력해 주세요.'); return; }
             await pseudoSend(phone);
@@ -362,11 +359,7 @@
                 state.emailVerified = true;
                 alert('확인되었습니다!');
                 updateNextAvailability();
-                // 검증 완료 후 자동 이동을 원하면 아래 주석 해제
-                // location.href = '/account/find-id/verify'; // TODO: 실제 주소로 변경
-            } else {
-                alert('인증번호가 일치하지 않습니다.');
-            }
+            } else { alert('인증번호가 일치하지 않습니다.'); }
         });
 
         $('#verifySmsCode').addEventListener('click', () => {
@@ -375,36 +368,20 @@
                 state.phoneVerified = true;
                 alert('확인되었습니다!');
                 updateNextAvailability();
-                // location.href = '/account/find-id/verify'; // TODO: 실제 주소로 변경
-            } else {
-                alert('인증번호가 일치하지 않습니다.');
-            }
+            } else { alert('인증번호가 일치하지 않습니다.'); }
         });
 
         // ===== 다음 버튼 =====
         nextBtn.addEventListener('click', () => {
-            if (!validateBasic()) {
-                alert('이름과 연락처 입력 및 인증을 완료해 주세요.');
-                return;
-            }
-            // 실제 구현 시: 서버에 전송하여 DB와 비교 후 아이디 결과 페이지로 이동
-            // fetch('/api/account/find-id', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
-            //   memberType: $('#memberType').value,
-            //   method: state.method,
-            //   name: $('#name').value.trim(),
-            //   email: $('#email').value.trim(),
-            //   phone: $('#phone').value.trim()
-            // })}).then(r=>r.json()).then(data=>{
-            //   // 성공 시 결과 페이지로 이동하며, 조회된 아이디(마스킹)를 쿼리나 상태로 전달
-            //   location.href = '/account/find-id/result'; // TODO: 실제 주소로 변경
-            // });
-
-            // 데모 동작: 결과 페이지로 이동 (실주소로 교체)
+            if (!validateBasic()) { alert('이름과 연락처 입력 및 인증을 완료해 주세요.'); return; }
+            // 실제 구현 시: DB조회 후 결과 페이지로 이동
+            // fetch('/api/account/find-id', { ... });
             location.href = '/account/find-id/result'; // TODO: 실제 주소로 변경
         });
 
         // 초기 상태
         toggleSections();
+        updateSendButtons(); // ← 추가
     </script>
 
     <div id="footer"></div>
