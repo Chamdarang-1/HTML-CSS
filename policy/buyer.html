@@ -38,13 +38,17 @@
 
         /* ===== Tabs with icons ===== */
         .tabbar {
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 0 20px;
-            border-bottom: 1px solid var(--line);
+            max-width: 1024px;
+            margin: 0 auto 32px;
+            /* ✅ 하단에 여유 공간 (32px 정도) */
+            padding: 10px 0;
+            /* ✅ 위아래 공간 추가 */
+            border-bottom: 1px solid #e5e5e5;
             display: grid;
             grid-template-columns: repeat(5, minmax(0, 1fr));
             gap: 0;
+            background: #fff;
+            /* 필요하면 흰 배경으로 통일 */
         }
 
         .icon-tab {
@@ -52,33 +56,41 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 18px 8px;
-            color: #9a9a9a;
+            gap: 8px;
+            padding: 16px 8px;
+            color: #666;
             cursor: pointer;
-            border-bottom: 2px solid transparent;
-            user-select: none;
+            border: 1px solid #e5e5e5;
+            background: #f9f9f9;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         .icon-tab:hover {
-            color: #222
+            background: #eee;
+            color: #222;
         }
 
         .icon-tab.is-active {
-            color: var(--focus);
-            border-color: var(--focus);
+            background: #111;
+            /* ✅ 검정 배경 */
+            color: #fff;
+            /* ✅ 흰 글씨/아이콘 */
+            border-color: #111;
+            /* ✅ 테두리도 맞춤 */
         }
 
         .icon {
             width: 28px;
             height: 28px;
-            display: block
         }
 
+
         .tab-label {
-            font-size: 12px;
+            font-size: 11px;
+            /* 라벨 더 작게 */
             letter-spacing: .02em;
-            text-transform: none;
         }
 
         /* ===== Page title & print button ===== */
@@ -229,9 +241,35 @@
         }
     </style>
 </head>
+<script>
+    fetch("../main/header.html") //각자 주소 수정!!!
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+
+            // header.html 안의 스크립트 실행 강제
+            const scripts = document.getElementById("header").querySelectorAll("script");
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement("script");
+                if (oldScript.src) {
+                    newScript.src = oldScript.src;
+                } else {
+                    newScript.textContent = oldScript.textContent;
+                }
+                document.body.appendChild(newScript);
+            });
+        });
+
+
+    fetch("../main/footer.html") //각자 주소 수정!!!
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("footer").innerHTML = data;
+        });
+</script>
 
 <body>
-
+    <div id="header"></div>
 
     <!-- Tab bar (icons) -->
     <nav class="tabbar" role="tablist" aria-label="약관 선택">
@@ -419,6 +457,7 @@
         // 초기 렌더
         onHashChange();
     </script>
+    <div id="footer"></div>
 </body>
 
 </html>
